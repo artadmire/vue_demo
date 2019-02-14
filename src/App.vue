@@ -1,47 +1,60 @@
 <template>
- <div >
-    <div class="row">
-        <div class="col-xs-offset-2 col-xs-8">
-            <div class="page-header">
-                <h2>Router Basic -01</h2>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2 col-xs-offset-2">
-            <div class="list-group">
-                <!-- <a href="#/about" class="list-group-item router-link-exact-active">About</a>
-                <a href="#/home" class="list-group-item ">Home</a> -->
-                <router-link to='/about' class="list-group-item  router-link-active">About</router-link>
-                <router-link to='/home' class="list-group-item ">Home</router-link>
-
-            </div>
-        </div>
-        <div class="col-xs-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <keep-alive>
-                          <router-view msg="abc"></router-view>
-                        </keep-alive>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div>
+        <button type="button" class="btn btn-primary" @click="getStatic">静态资源</button>
+        <button type="button" class="btn btn-primary">动态资源get</button>
+        <button type="button" class="btn btn-primary">动态资源post</button>
+        <button type="button" class="btn btn-primary">静态资源</button>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
-
+import axios from 'axios'
 export default {
  data() {
- return {
+   return {
+    
+   }
+ },
+//  mounted() {
+//    const url=`https://api.github.com/search/repositories?q=v&sort=stars`
+//   //  this.$http.get(url).then(
+//   //    response=>{
+//   //       const result=response.data
+//   //       const mostRepo=result.items[0]
+//   //       this.repoUrl=mostRepo.html_url
+//   //       this.repoName=mostRepo.name
+//   //  },
+//   //   response=>{
+//   //      alert('失败')
+//   //  }
+//   //  )
+//    axios.get(url).then(
+//      response=>{
+//         const result=response.data
+//         const mostRepo=result.items[0]
+//         this.repoUrl=mostRepo.html_url
+//         this.repoName=mostRepo.name
+//         }
+//    ).catch(error=>{
+//      alert('失败')
+//    })
+//  }
+ methods: {
+     getStatic(){
+         axios.get('../src/mock/data.json')
+               .then(res=>console.log(res))
+               .catch(error=>console.log(error))
+     }
+ }
+
+ 
+   
+
 
  }
- 
-}
-}
+
 </script>
 
-<style 
+<style >
+     
 </style>
